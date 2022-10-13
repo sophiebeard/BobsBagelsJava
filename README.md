@@ -21,20 +21,29 @@ As a member of the public
 So I can order a bagel when I want to
 I'd like to add an item to my basket
 ```
-Tests:
+Domain Model:
+|Object|Properties   |Message  |Context|Output       |
+|------|-------------|---------|-------|-------------|
+|Basket|Bagels @Array|add(item)|       |@Array[@Item]|
+
+ests:
 Test 1 - Has an item been added to the basket?
 Test 2 - Has THE item been added to the basket? 
-
 
 ```
 As a member of the public,
 So that I can change my order
 I'd like to remove an item from my basket
 ```
+Domain Model:
+|Object|Properties   |Message      |Context|Output        |
+|------|-------------|-------------|-------|--------------|
+|Basket|Bagels @Array|add(bagel)   |       |@Array[@Bagel]|
+|      |             |remove(bagel)|       |@Array[@Bagel]|
+
 Tests:
 Test 3 - Has an item been removed from the basket?
 Test 4 - Has THE item been removed from the basket?
-
 
 ---
 ```
