@@ -52,4 +52,23 @@ public class BasketTest {
         // Assert
         assertEquals(expected, actual);
     }
+
+    @Test // 4
+    @DisplayName("Validate that the specific bagel has been removed from the basket")
+    void removeValidBagel() {
+        // Arrange
+        Basket basket = new Basket();
+        Bagel bagel1 = new Bagel(42);
+        Bagel bagel2 = new Bagel(40);
+        basket.add(bagel1);
+        basket.add(bagel2);
+        basket.remove(bagel1);
+        Boolean actual = basket.checkRemovedBagel(bagel1);
+
+        // Act
+        Boolean expected = false;
+
+        // Assert
+        assertEquals(expected, actual);
+    }
 }
