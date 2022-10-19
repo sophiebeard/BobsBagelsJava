@@ -2,8 +2,9 @@ import java.util.ArrayList;
 
 public class Basket {
 
-    ArrayList basketItems = new ArrayList();
-    void add (Object item) {
+    ArrayList <Bagel> basketItems = new ArrayList<>();
+
+    void add (Bagel item) {
         basketItems.add(item);
-    };
+    }
 }
