@@ -7,4 +7,8 @@ public class Basket {
     void add (Bagel item) {
         basketItems.add(item);
     }
+
+    void remove (Bagel item) {
+        basketItems.remove(item);
+    }
 }

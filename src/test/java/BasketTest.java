@@ -36,4 +36,20 @@ public class BasketTest {
         // Assert
         assertEquals(expected, actual);
     }
+
+    @Test // 3
+    @DisplayName("Verify that a bagel has been removed from the basket")
+    void removeBagel() {
+        // Arrange
+        Basket basket = new Basket();
+        Bagel bagel1 = new Bagel(7);
+        basket.add(bagel1);
+        int expected = 0;
+
+        //Act
+        basket.remove(bagel1);
+        int actual = basket.basketItems.size();
+        // Assert
+        assertEquals(expected, actual);
+    }
 }
