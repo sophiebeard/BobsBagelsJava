@@ -8,7 +8,7 @@ public class BasketTest {
     @DisplayName("Verify that a bagel has been added to the basket")
     void addBagel() {
         // Arrange
-       Basket basket = new Basket();
+       Basket basket = new Basket(3);
        Bagel bagel1 = new Bagel(7);
        int expected = 1;
 
@@ -23,7 +23,7 @@ public class BasketTest {
     @DisplayName("Validate that the specific bagel has been added to the basket")
     void addValidBagel() {
         // Arrange
-        Basket basket = new Basket();
+        Basket basket = new Basket(3);
         Bagel bagel1 = new Bagel(42);
 
         basket.add(bagel1);
@@ -41,7 +41,7 @@ public class BasketTest {
     @DisplayName("Verify that a bagel has been removed from the basket")
     void removeBagel() {
         // Arrange
-        Basket basket = new Basket();
+        Basket basket = new Basket(3);
         Bagel bagel1 = new Bagel(7);
         basket.add(bagel1);
         int expected = 0;
@@ -57,16 +57,36 @@ public class BasketTest {
     @DisplayName("Validate that the specific bagel has been removed from the basket")
     void removeValidBagel() {
         // Arrange
-        Basket basket = new Basket();
+        Basket basket = new Basket(3);
         Bagel bagel1 = new Bagel(42);
         Bagel bagel2 = new Bagel(40);
         basket.add(bagel1);
         basket.add(bagel2);
         basket.remove(bagel1);
-        Boolean actual = basket.checkRemovedBagel(bagel1);
+        Boolean expected = false;
 
         // Act
-        Boolean expected = false;
+        Boolean actual = basket.checkRemovedBagel(bagel1);
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test // 5
+    @DisplayName("Check whether the basket is full")
+    void isFull() {
+        // Arrange
+        Basket basket = new Basket(3);
+        Bagel bagel1 = new Bagel(42);
+        Bagel bagel2 = new Bagel(40);
+        Bagel bagel3 = new Bagel(45);
+        basket.add(bagel1);
+        basket.add(bagel2);
+        basket.add(bagel3);
+        Boolean expected = true;
+
+        // Act
+        Boolean actual = basket.isFull(basket);
 
         // Assert
         assertEquals(expected, actual);

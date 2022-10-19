@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 
 public class Basket {
+    int basketCapacity;
+    ArrayList <Bagel> basketItems = new ArrayList<>(this.basketCapacity);
+    public Basket(int capacity) {
+        this.basketCapacity = capacity;
 
-    ArrayList <Bagel> basketItems = new ArrayList<>();
+    }
 
-    void add (Bagel item) {
+    void add (Bagel item)  {
         basketItems.add(item);
     }
 
@@ -18,5 +22,14 @@ public class Basket {
                 return true;
             }
         } return false;
+    }
+
+    Boolean isFull (Basket basket) {
+        if (basket.basketItems.size() >= basket.basketCapacity) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
