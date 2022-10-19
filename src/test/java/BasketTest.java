@@ -9,15 +9,13 @@ public class BasketTest {
     void addBagel() {
         // Arrange
        Basket basket = new Basket();
-        String item = "item1";
+       Bagel bagel1 = new Bagel();
        int expected = 1;
 
-        //Act
-        basket.add(item);
-        int actual = basket.basketItems.length;
+       //Act
+        basket.add(bagel1);
+        int actual = basket.basketItems.size();
         // Assert
         assertEquals(expected, actual);
     }
 }
-
-
