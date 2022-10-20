@@ -3,9 +3,12 @@ import java.util.ArrayList;
 public class Basket {
     int basketCapacity;
     ArrayList <Bagel> basketItems = new ArrayList<>(this.basketCapacity);
+
+    public Basket() {
+        this.basketCapacity = 3;
+    }
     public Basket(int capacity) {
         this.basketCapacity = capacity;
-
     }
 
     String add (Bagel item, Basket basket)  {
