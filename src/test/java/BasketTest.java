@@ -13,7 +13,7 @@ public class BasketTest {
        int expected = 1;
 
        //Act
-        basket.add(bagel1);
+        basket.add(bagel1, basket);
         int actual = basket.basketItems.size();
         // Assert
         assertEquals(expected, actual);
@@ -26,7 +26,7 @@ public class BasketTest {
         Basket basket = new Basket(3);
         Bagel bagel1 = new Bagel(42);
 
-        basket.add(bagel1);
+        basket.add(bagel1, basket);
         int expected = (basket.basketItems.get(0)).id; // ((Bagel)basket.basketItems.get(0) alternative method to telling the array that it will take Bagel objects only.
 
         // Act
@@ -43,7 +43,7 @@ public class BasketTest {
         // Arrange
         Basket basket = new Basket(3);
         Bagel bagel1 = new Bagel(7);
-        basket.add(bagel1);
+        basket.add(bagel1, basket);
         int expected = 0;
 
         //Act
@@ -60,8 +60,8 @@ public class BasketTest {
         Basket basket = new Basket(3);
         Bagel bagel1 = new Bagel(42);
         Bagel bagel2 = new Bagel(40);
-        basket.add(bagel1);
-        basket.add(bagel2);
+        basket.add(bagel1, basket);
+        basket.add(bagel2, basket);
         basket.remove(bagel1);
         Boolean expected = false;
 
@@ -80,13 +80,35 @@ public class BasketTest {
         Bagel bagel1 = new Bagel(42);
         Bagel bagel2 = new Bagel(40);
         Bagel bagel3 = new Bagel(45);
-        basket.add(bagel1);
-        basket.add(bagel2);
-        basket.add(bagel3);
+        basket.add(bagel1, basket);
+        basket.add(bagel2, basket);
+        basket.add(bagel3, basket);
         Boolean expected = true;
 
         // Act
         Boolean actual = basket.isFull(basket);
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test // 6
+    @DisplayName("Check if it is possible to add a bagel to a full basket")
+    void addWhenFull() {
+        // Arrange
+        Basket basket = new Basket(3);
+        Bagel bagel1 = new Bagel(42);
+        Bagel bagel2 = new Bagel(40);
+        Bagel bagel3 = new Bagel(45);
+        Bagel bagel4 = new Bagel(44);
+        basket.add(bagel1, basket);
+        basket.add(bagel2, basket);
+        basket.add(bagel3, basket);
+        basket.add(bagel4, basket);
+        int expected = 3;
+
+        // Act
+        int actual = basket.basketItems.size();
 
         // Assert
         assertEquals(expected, actual);

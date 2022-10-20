@@ -8,8 +8,12 @@ public class Basket {
 
     }
 
-    void add (Bagel item)  {
+    String add (Bagel item, Basket basket)  {
+        if (isFull(basket)) {
+            return "Basket is full; cannot add bagel to basket";
+        }
         basketItems.add(item);
+        return "Bagel added to basket";
     }
 
     void remove (Bagel item) {
